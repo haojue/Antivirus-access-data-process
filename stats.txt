@@ -1,0 +1,20 @@
+2014-09-19
+KAV_engine kav-worker  1
+KAV dailyc.avc  7240
+EAV qavdb  2
+SAV vdlversion.txt  154
+2014-09-28
+KAV_engine kav-worker  6
+KAV dailyc.avc  9417
+EAV qavdb  176
+SAV vdlversion.txt  400
+2014-09-29
+KAV_engine kav-worker  3
+KAV dailyc.avc  9203
+EAV qavdb  90
+SAV vdlversion.txt  393
+2014-09-26
+KAV_engine kav-worker 5 
+KAV dailyc.avc  9417
+EAV qavdb  176
+SAV vdlversion.txt  400
