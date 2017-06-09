@@ -1,0 +1,57 @@
+#! /usr/bin/expect
+#! /bin/bash
+#################################################
+# Copyright (C) 2012-2013, Juniper Networks, Inc.
+# All rights reserved.
+# Author:  Haojue Wang
+# %DESCR%: Script used to check IKE cookies, when 
+# cookie number is larger than 8000 on one SPU, clear
+# cookies  
+#################################################
+
+set IP   [lindex $argv 0]
+set USER [lindex $argv 1]
+set PASS [lindex $argv 2]
+#set PASS MaRtInI
+#set FILE [lindex $argv 3]
+set FILE1 utm_aaaa.bin
+set FILE2 utm_bbbb.bin
+
+
+proc do_console_login {ip user pass file1 file2} {
+
+        set prompt "ftp>"
+#        set file exp1.sh
+
+        spawn ftp $ip
+                     expect   "):"
+                     send "$user\r"
+                     expect   "Password :"
+                     send "$pass\r"
+                     expect "$prompt"
+                     send "bin\r"
+                     expect "$prompt" 
+                     send "cd /Users/haojue\r"
+                     expect "$prompt"
+                     send "get $file1\r"
+                     sleep 5 
+                     expect "$prompt"
+                     send "get $file2\r"
+                     sleep 5
+                     expect "$prompt"
+		     send "bye\r"
+                     expect ">>"  
+
+}
+
+if {$argc<3} {
+
+        puts stderr "Usage: $argv0 ip username password\n "
+        exit 1
+}
+
+do_console_login $IP $USER $PASS $FILE1 $FILE2 
+
+close
+
+exit 0
